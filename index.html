@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мій Інтернет Магазин</title>
+    <title>VelvetMoon Deco</title>
     <style>
+        :root {
+            /* Основна кольорова палітра - легко змінювати */
+            --primary-color: #2c1810;
+            --secondary-color: #8b4513;
+            --accent-color: #d4af37;
+            --background-gradient: linear-gradient(135deg, #2c1810 0%, #5d4e37 50%, #8b4513 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-dark: #2c1810;
+            --text-light: #ffffff;
+            --shadow: rgba(44, 24, 16, 0.15);
+            --border-radius: 15px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,8 +27,8 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-dark);
+            background: var(--background-gradient);
             min-height: 100vh;
         }
 
@@ -26,31 +39,68 @@
         }
 
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--card-bg);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 20px var(--shadow);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #667eea;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        .lang-btn:hover {
+            background: var(--secondary-color);
+            color: var(--text-light);
         }
 
         .cart-btn {
-            background: #667eea;
-            color: white;
+            background: var(--primary-color);
+            color: var(--text-light);
             border: none;
             padding: 10px 20px;
             border-radius: 25px;
@@ -61,13 +111,13 @@
         }
 
         .cart-btn:hover {
-            background: #5a6fd8;
+            background: var(--secondary-color);
             transform: translateY(-2px);
         }
 
         .cart-count {
-            background: #ff4757;
-            color: white;
+            background: var(--accent-color);
+            color: var(--primary-color);
             border-radius: 50%;
             padding: 2px 6px;
             font-size: 0.8rem;
@@ -76,6 +126,7 @@
             right: -5px;
             min-width: 20px;
             text-align: center;
+            font-weight: bold;
         }
 
         main {
@@ -85,14 +136,14 @@
 
         .hero {
             text-align: center;
-            color: white;
+            color: var(--text-light);
             margin-bottom: 3rem;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
@@ -108,10 +159,10 @@
         }
 
         .product-card {
-            background: white;
-            border-radius: 15px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
             padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px var(--shadow);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -124,50 +175,60 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px var(--shadow);
         }
 
         .product-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            background: linear-gradient(45deg, #f8f8f8, #e8e8e8);
             border-radius: 10px;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: #999;
+            color: var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
         .product-title {
             font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: var(--primary-color);
         }
 
         .product-description {
             color: #666;
             margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .product-price {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #667eea;
+            color: var(--secondary-color);
             margin-bottom: 1rem;
         }
 
         .add-to-cart {
             width: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
             border: none;
             padding: 12px;
             border-radius: 8px;
@@ -179,32 +240,32 @@
 
         .add-to-cart:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px var(--shadow);
         }
 
-        .cart-modal {
+        .cart-modal, .legal-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 2000;
         }
 
-        .cart-content {
-            background: white;
+        .cart-content, .legal-content {
+            background: var(--card-bg);
             margin: 5% auto;
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             max-width: 600px;
             position: relative;
             max-height: 80vh;
             overflow-y: auto;
         }
 
-        .close-cart {
+        .close-modal {
             position: absolute;
             top: 1rem;
             right: 1rem;
@@ -213,6 +274,18 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: #999;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: #f0f0f0;
+            color: var(--primary-color);
         }
 
         .cart-item {
@@ -232,13 +305,13 @@
             font-weight: bold;
             text-align: center;
             margin: 1rem 0;
-            color: #667eea;
+            color: var(--secondary-color);
         }
 
         .checkout-btn {
             width: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            color: var(--text-light);
             border: none;
             padding: 15px;
             border-radius: 8px;
@@ -246,6 +319,12 @@
             font-size: 1.1rem;
             font-weight: bold;
             margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
         }
 
         .quantity-controls {
@@ -255,8 +334,8 @@
         }
 
         .quantity-btn {
-            background: #667eea;
-            color: white;
+            background: var(--secondary-color);
+            color: var(--text-light);
             border: none;
             width: 30px;
             height: 30px;
@@ -265,6 +344,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
         }
 
         .quantity {
@@ -274,12 +354,13 @@
         }
 
         .remove-item {
-            background: #ff4757;
-            color: white;
+            background: #dc3545;
+            color: var(--text-light);
             border: none;
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 0.8rem;
         }
 
         footer {
@@ -287,8 +368,47 @@
             backdrop-filter: blur(10px);
             text-align: center;
             padding: 2rem 0;
-            color: white;
+            color: var(--text-light);
             margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #28a745;
+            color: var(--text-light);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            z-index: 3000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .notification.show {
+            transform: translateX(0);
         }
 
         @media (max-width: 768px) {
@@ -300,27 +420,30 @@
                 grid-template-columns: 1fr;
             }
             
-            .cart-content {
-                margin: 10% 20px;
+            .cart-content, .legal-content {
+                margin: 10% 10px;
                 max-width: none;
+            }
+
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
 
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: #4CAF50;
-            color: white;
-            padding: 1rem 1.5rem;
+        /* Секція для легкого додавання товарів */
+        .admin-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
             border-radius: 8px;
-            z-index: 3000;
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-        }
-
-        .notification.show {
-            transform: translateX(0);
+            margin-bottom: 2rem;
+            display: none; /* Показувати тільки в режимі редагування */
         }
     </style>
 </head>
@@ -328,11 +451,20 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">🛍️ VelvetMoonDeco</div>
-                <button class="cart-btn" onclick="openCart()">
-                    🛒 Кошик
-                    <span class="cart-count" id="cartCount">0</span>
-                </button>
+                <div class="logo">
+                    🌙 <span data-translate="siteName">VelvetMoon Deco</span>
+                </div>
+                <div class="header-controls">
+                    <div class="language-selector">
+                        <button class="lang-btn active" data-lang="uk">УК</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="de">DE</button>
+                    </div>
+                    <button class="cart-btn" onclick="openCart()">
+                        🛒 <span data-translate="cart">Кошик</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -340,8 +472,13 @@
     <main>
         <div class="container">
             <div class="hero">
-                <h1>Ласкаво просимо до нашого магазину!</h1>
-                <p>Якісні товари за найкращими цінами</p>
+                <h1 data-translate="heroTitle">Ласкаво просимо до VelvetMoon Deco!</h1>
+                <p data-translate="heroSubtitle">Унікальні предмети декору для вашого дому</p>
+            </div>
+
+            <!-- Адмін помітка для легкого редагування -->
+            <div class="admin-note">
+                <strong>📝 Для додавання товарів:</strong> Відредагуйте об'єкт <code>productsData</code> в JavaScript секції (рядок ~100). Просто скопіюйте один товар і змініть дані.
             </div>
 
             <div class="products-grid" id="productsGrid">
@@ -353,90 +490,443 @@
     <!-- Модальне вікно кошика -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
-            <button class="close-cart" onclick="closeCart()">×</button>
-            <h2>Ваш кошик</h2>
+            <button class="close-modal" onclick="closeCart()">×</button>
+            <h2 data-translate="yourCart">Ваш кошик</h2>
             <div id="cartItems"></div>
             <div class="cart-total" id="cartTotal">Загальна сума: 0 ₴</div>
-            <button class="checkout-btn" onclick="checkout()">Оформити замовлення</button>
+            <button class="checkout-btn" onclick="checkout()" data-translate="checkout">Оформити замовлення</button>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для юридичних сторінок -->
+    <div class="legal-modal" id="legalModal">
+        <div class="legal-content">
+            <button class="close-modal" onclick="closeLegal()">×</button>
+            <div id="legalContent"></div>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 VelvetMoonDeco. Всі права захищені.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link" onclick="showLegal('privacy')" data-translate="privacy">Політика конфіденційності</a>
+                <a href="#" class="footer-link" onclick="showLegal('terms')" data-translate="terms">Умови використання</a>
+                <a href="#" class="footer-link" onclick="showLegal('delivery')" data-translate="delivery">Доставка та повернення</a>
+                <a href="#" class="footer-link" onclick="showLegal('contact')" data-translate="contact">Контакти</a>
+            </div>
+            <p>&copy; 2025 VelvetMoon Deco by Stefanson. <span data-translate="rights">Всі права захищені.</span></p>
         </div>
     </footer>
 
     <div class="notification" id="notification"></div>
 
     <script>
-        // Дані товарів (можна легко редагувати)
-        const products = [
+        // ============= КОНФІГУРАЦІЯ ТОВАРІВ (ЛЕГКО РЕДАГУВАТИ) =============
+        const productsData = [
             {
                 id: 1,
-                name: "Мобіль Океан",
-                description: "ніжний, чарівний та унікальний",
-                price: 15990,
-                image: "📱"
+                name: {
+                    uk: "Оксамитова подушка Moon",
+                    en: "Velvet Moon Cushion", 
+                    de: "Samt Mond Kissen"
+                },
+                description: {
+                    uk: "Розкішна оксамитова подушка з вишивкою місяця",
+                    en: "Luxurious velvet cushion with moon embroidery",
+                    de: "Luxuriöses Samtkissen mit Mondstickerei"
+                },
+                price: 1290,
+                image: "🌙",
+                category: "textiles"
             },
             {
                 id: 2,
-                name: "Ноутбук Lenovo",
-                description: "Надійний ноутбук для роботи та навчання",
-                price: 25900,
-                image: "💻"
+                name: {
+                    uk: "Свічка з ароматом лаванди",
+                    en: "Lavender Scented Candle",
+                    de: "Lavendel Duftkerze"
+                },
+                description: {
+                    uk: "Ароматична свічка ручної роботи з натуральними маслами",
+                    en: "Handmade scented candle with natural oils",
+                    de: "Handgemachte Duftkerze mit natürlichen Ölen"
+                },
+                price: 450,
+                image: "🕯️",
+                category: "candles"
             },
             {
                 id: 3,
-                name: "Навушники AirPods",
-                description: "Бездротові навушники з відмінною якістю звуку",
-                price: 5490,
-                image: "🎧"
+                name: {
+                    uk: "Дерев'яна ваза Zen",
+                    en: "Wooden Zen Vase",
+                    de: "Zen Holzvase"
+                },
+                description: {
+                    uk: "Мінімалістична ваза з натурального дерева",
+                    en: "Minimalist vase made from natural wood",
+                    de: "Minimalistische Vase aus Naturholz"
+                },
+                price: 890,
+                image: "🏺",
+                category: "decor"
             },
             {
                 id: 4,
-                name: "Розумний годинник",
-                description: "Стильний годинник з фітнес-функціями",
-                price: 8990,
-                image: "⌚"
+                name: {
+                    uk: "Люстра Crystal Dreams",
+                    en: "Crystal Dreams Chandelier",
+                    de: "Crystal Dreams Kronleuchter"
+                },
+                description: {
+                    uk: "Елегантна кришталева люстра для вітальні",
+                    en: "Elegant crystal chandelier for living room",
+                    de: "Eleganter Kristallkronleuchter für Wohnzimmer"
+                },
+                price: 4500,
+                image: "💎",
+                category: "lighting"
             },
             {
                 id: 5,
-                name: "Планшет iPad",
-                description: "Універсальний планшет для творчості та роботи",
-                price: 19990,
-                image: "📊"
+                name: {
+                    uk: "Килим Persian Style",
+                    en: "Persian Style Rug",
+                    de: "Perserteppich"
+                },
+                description: {
+                    uk: "Традиційний килим ручної роботи з східними мотивами",
+                    en: "Traditional handmade rug with oriental motifs",
+                    de: "Traditioneller handgeknüpfter Teppich mit orientalischen Motiven"
+                },
+                price: 2890,
+                image: "🧿",
+                category: "textiles"
             },
             {
                 id: 6,
-                name: "Електросамокат",
-                description: "Зручний транспорт для міста",
-                price: 12990,
-                image: "🛴"
+                name: {
+                    uk: "Дзеркало Vintage Gold",
+                    en: "Vintage Gold Mirror",
+                    de: "Vintage Gold Spiegel"
+                },
+                description: {
+                    uk: "Антикварне дзеркало у золотистій рамі",
+                    en: "Antique mirror in golden frame",
+                    de: "Antiker Spiegel in goldenem Rahmen"
+                },
+                price: 1650,
+                image: "🪞",
+                category: "decor"
             }
         ];
 
-        let cart = [];
+        // ============= МУЛЬТИМОВНА ПІДТРИМКА =============
+        const translations = {
+            uk: {
+                siteName: "VelvetMoon Deco",
+                cart: "Кошик",
+                heroTitle: "Ласкаво просимо до VelvetMoon Deco!",
+                heroSubtitle: "Унікальні предмети декору для вашого дому",
+                addToCart: "Додати в кошик",
+                yourCart: "Ваш кошик",
+                total: "Загальна сума",
+                checkout: "Оформити замовлення",
+                emptyCart: "Кошик порожній",
+                currency: "₴",
+                privacy: "Політика конфіденційності",
+                terms: "Умови використання", 
+                delivery: "Доставка та повернення",
+                contact: "Контакти",
+                rights: "Всі права захищені",
+                addedToCart: "додано в кошик!"
+            },
+            en: {
+                siteName: "VelvetMoon Deco",
+                cart: "Cart",
+                heroTitle: "Welcome to VelvetMoon Deco!",
+                heroSubtitle: "Unique home decor items",
+                addToCart: "Add to Cart",
+                yourCart: "Your Cart",
+                total: "Total",
+                checkout: "Checkout",
+                emptyCart: "Cart is empty",
+                currency: "€",
+                privacy: "Privacy Policy",
+                terms: "Terms of Service",
+                delivery: "Shipping & Returns", 
+                contact: "Contact",
+                rights: "All rights reserved",
+                addedToCart: "added to cart!"
+            },
+            de: {
+                siteName: "VelvetMoon Deco",
+                cart: "Warenkorb",
+                heroTitle: "Willkommen bei VelvetMoon Deco!",
+                heroSubtitle: "Einzigartige Wohndekorationen",
+                addToCart: "In den Warenkorb",
+                yourCart: "Ihr Warenkorb",
+                total: "Gesamt",
+                checkout: "Zur Kasse",
+                emptyCart: "Warenkorb ist leer",
+                currency: "€",
+                privacy: "Datenschutz",
+                terms: "Nutzungsbedingungen",
+                delivery: "Versand & Rücksendung",
+                contact: "Kontakt", 
+                rights: "Alle Rechte vorbehalten",
+                addedToCart: "in den Warenkorb hinzugefügt!"
+            }
+        };
 
-        // Відображення товарів
+        // ============= ЮРИДИЧНІ ТЕКСТИ =============
+        const legalTexts = {
+            privacy: {
+                uk: {
+                    title: "Політика конфіденційності",
+                    content: `
+                        <h3>Збір інформації</h3>
+                        <p>Ми збираємо інформацію, яку ви надаєте нам при оформленні замовлення, включаючи ім'я, адресу електронної пошти, телефон та адресу доставки.</p>
+                        
+                        <h3>Використання інформації</h3>
+                        <p>Ваша інформація використовується для:</p>
+                        <ul>
+                            <li>Обробки та виконання замовлень</li>
+                            <li>Зв'язку з вами щодо замовлення</li>
+                            <li>Покращення наших послуг</li>
+                        </ul>
+                        
+                        <h3>Захист даних</h3>
+                        <p>Ми використовуємо сучасні методи шифрування для захисту ваших персональних даних.</p>
+                    `
+                },
+                en: {
+                    title: "Privacy Policy", 
+                    content: `
+                        <h3>Information Collection</h3>
+                        <p>We collect information you provide when placing an order, including name, email, phone, and shipping address.</p>
+                        
+                        <h3>Use of Information</h3>
+                        <p>Your information is used for:</p>
+                        <ul>
+                            <li>Processing and fulfilling orders</li>
+                            <li>Communicating about your order</li>
+                            <li>Improving our services</li>
+                        </ul>
+                        
+                        <h3>Data Protection</h3>
+                        <p>We use modern encryption methods to protect your personal data.</p>
+                    `
+                },
+                de: {
+                    title: "Datenschutzerklärung",
+                    content: `
+                        <h3>Datenerfassung</h3>
+                        <p>Wir sammeln Informationen, die Sie bei der Bestellung angeben, einschließlich Name, E-Mail, Telefon und Lieferadresse.</p>
+                        
+                        <h3>Datenverwendung</h3>
+                        <p>Ihre Informationen werden verwendet für:</p>
+                        <ul>
+                            <li>Bearbeitung und Erfüllung von Bestellungen</li>
+                            <li>Kommunikation über Ihre Bestellung</li>
+                            <li>Verbesserung unserer Dienstleistungen</li>
+                        </ul>
+                        
+                        <h3>Datenschutz</h3>
+                        <p>Wir verwenden moderne Verschlüsselungsmethoden zum Schutz Ihrer persönlichen Daten.</p>
+                    `
+                }
+            },
+            terms: {
+                uk: {
+                    title: "Умови використання",
+                    content: `
+                        <h3>Загальні положення</h3>
+                        <p>Використовуючи наш веб-сайт, ви погоджуєтесь з цими умовами.</p>
+                        
+                        <h3>Замовлення</h3>
+                        <p>Всі замовлення обробляються протягом 1-2 робочих днів. Ми залишаємо за собою право скасувати замовлення у разі відсутності товару.</p>
+                        
+                        <h3>Оплата</h3>
+                        <p>Оплата здійснюється через безпечні платіжні системи. Всі ціни вказані у гривнях і включають ПДВ.</p>
+                    `
+                },
+                en: {
+                    title: "Terms of Service",
+                    content: `
+                        <h3>General Terms</h3>
+                        <p>By using our website, you agree to these terms.</p>
+                        
+                        <h3>Orders</h3>
+                        <p>All orders are processed within 1-2 business days. We reserve the right to cancel orders if items are unavailable.</p>
+                        
+                        <h3>Payment</h3>
+                        <p>Payment is processed through secure payment systems. All prices are in EUR and include VAT.</p>
+                    `
+                },
+                de: {
+                    title: "Nutzungsbedingungen",
+                    content: `
+                        <h3>Allgemeine Bedingungen</h3>
+                        <p>Durch die Nutzung unserer Website stimmen Sie diesen Bedingungen zu.</p>
+                        
+                        <h3>Bestellungen</h3>
+                        <p>Alle Bestellungen werden innerhalb von 1-2 Werktagen bearbeitet. Wir behalten uns das Recht vor, Bestellungen bei Nichtverfügbarkeit zu stornieren.</p>
+                        
+                        <h3>Zahlung</h3>
+                        <p>Die Zahlung erfolgt über sichere Zahlungssysteme. Alle Preise sind in EUR und inkl. MwSt.</p>
+                    `
+                }
+            },
+            delivery: {
+                uk: {
+                    title: "Доставка та повернення",
+                    content: `
+                        <h3>Доставка</h3>
+                        <p>Ми доставляємо по всій Україні протягом 2-5 робочих днів.</p>
+                        <ul>
+                            <li>Безкоштовна доставка при замовленні від 1000₴</li>
+                            <li>Стандартна доставка: 80₴</li>
+                            <li>Експрес доставка: 150₴</li>
+                        </ul>
+                        
+                        <h3>Повернення</h3>
+                        <p>Ви можете повернути товар протягом 14 днів з дня отримання.</p>
+                    `
+                },
+                en: {
+                    title: "Shipping & Returns",
+                    content: `
+                        <h3>Shipping</h3>
+                        <p>We deliver worldwide within 5-10 business days.</p>
+                        <ul>
+                            <li>Free shipping on orders over €50</li>
+                            <li>Standard shipping: €5</li>
+                            <li>Express shipping: €15</li>
+                        </ul>
+                        
+                        <h3>Returns</h3>
+                        <p>You can return items within 14 days of receipt.</p>
+                    `
+                },
+                de: {
+                    title: "Versand & Rücksendung",
+                    content: `
+                        <h3>Versand</h3>
+                        <p>Wir liefern deutschlandweit innerhalb von 2-5 Werktagen.</p>
+                        <ul>
+                            <li>Kostenloser Versand ab €50</li>
+                            <li>Standardversand: €5</li>
+                            <li>Expressversand: €15</li>
+                        </ul>
+                        
+                        <h3>Rücksendung</h3>
+                        <p>Sie können Artikel innerhalb von 14 Tagen nach Erhalt zurücksenden.</p>
+                    `
+                }
+            },
+            contact: {
+                uk: {
+                    title: "Контакти",
+                    content: `
+                        <h3>Зв'яжіться з нами</h3>
+                        <p><strong>Email:</strong> info@velvetmoondeco.com</p>
+                        <p><strong>Телефон:</strong> +380 (50) 123-45-67</p>
+                        <p><strong>Адреса:</strong> вул. Декоративна, 15, Київ, Україна</p>
+                        
+                        <h3>Години роботи</h3>
+                        <p>Пн-Пт: 9:00 - 18:00<br>
+                        Сб: 10:00 - 16:00<br>
+                        Нд: вихідний</p>
+                    `
+                },
+                en: {
+                    title: "Contact",
+                    content: `
+                        <h3>Get in Touch</h3>
+                        <p><strong>Email:</strong> info@velvetmoondeco.com</p>
+                        <p><strong>Phone:</strong> +49 (30) 123-45-67</p>
+                        <p><strong>Address:</strong> Decorative Str. 15, Berlin, Germany</p>
+                        
+                        <h3>Business Hours</h3>
+                        <p>Mon-Fri: 9:00 - 18:00<br>
+                        Sat: 10:00 - 16:00<br>
+                        Sun: Closed</p>
+                    `
+                },
+                de: {
+                    title: "Kontakt",
+                    content: `
+                        <h3>Kontaktieren Sie uns</h3>
+                        <p><strong>E-Mail:</strong> info@velvetmoondeco.com</p>
+                        <p><strong>Telefon:</strong> +49 (30) 123-45-67</p>
+                        <p><strong>Adresse:</strong> Dekorative Str. 15, Berlin, Deutschland</p>
+                        
+                        <h3>Geschäftszeiten</h3>
+                        <p>Mo-Fr: 9:00 - 18:00<br>
+                        Sa: 10:00 - 16:00<br>
+                        So: Geschlossen</p>
+                    `
+                }
+            }
+        };
+
+        // ============= ГЛОБАЛЬНІ ЗМІННІ =============
+        let cart = [];
+        let currentLanguage = 'uk';
+
+        // ============= ФУНКЦІЇ МУЛЬТИМОВИ =============
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.lang = lang;
+            
+            // Оновити активну кнопку мови
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Перекласти всі елементи
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.dataset.translate;
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Оновити товари та кошик
+            displayProducts();
+            if (cart.length > 0) {
+                displayCartItems();
+            }
+
+            // Зберегти вибрану мову
+            localStorage.setItem('language', lang);
+        }
+
+        // ============= ВІДОБРАЖЕННЯ ТОВАРІВ =============
         function displayProducts() {
             const grid = document.getElementById('productsGrid');
-            grid.innerHTML = products.map(product => `
+            const t = translations[currentLanguage];
+            
+            grid.innerHTML = productsData.map(product => `
                 <div class="product-card">
                     <div class="product-image">${product.image}</div>
-                    <div class="product-title">${product.name}</div>
-                    <div class="product-description">${product.description}</div>
-                    <div class="product-price">${product.price.toLocaleString()} ₴</div>
+                    <div class="product-title">${product.name[currentLanguage]}</div>
+                    <div class="product-description">${product.description[currentLanguage]}</div>
+                    <div class="product-price">${product.price.toLocaleString()} ${t.currency}</div>
                     <button class="add-to-cart" onclick="addToCart(${product.id})">
-                        Додати в кошик
+                        ${t.addToCart}
                     </button>
                 </div>
             `).join('');
         }
 
-        // Додавання товару в кошик
+        // ============= ФУНКЦІЇ КОШИКА =============
         function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
+            const product = productsData.find(p => p.id === productId);
             const existingItem = cart.find(item => item.id === productId);
 
             if (existingItem) {
@@ -446,16 +936,15 @@
             }
 
             updateCartCount();
-            showNotification(`${product.name} додано в кошик!`);
+            const t = translations[currentLanguage];
+            showNotification(`${product.name[currentLanguage]} ${t.addedToCart}`);
         }
 
-        // Оновлення лічильника кошика
         function updateCartCount() {
             const count = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cartCount').textContent = count;
         }
 
-        // Показ повідомлення
         function showNotification(message) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
@@ -466,33 +955,31 @@
             }, 3000);
         }
 
-        // Відкриття кошика
         function openCart() {
             displayCartItems();
             document.getElementById('cartModal').style.display = 'block';
         }
 
-        // Закриття кошика
         function closeCart() {
             document.getElementById('cartModal').style.display = 'none';
         }
 
-        // Відображення товарів у кошику
         function displayCartItems() {
             const cartItemsDiv = document.getElementById('cartItems');
             const cartTotalDiv = document.getElementById('cartTotal');
+            const t = translations[currentLanguage];
 
             if (cart.length === 0) {
-                cartItemsDiv.innerHTML = '<p style="text-align: center; color: #999;">Кошик порожній</p>';
-                cartTotalDiv.textContent = 'Загальна сума: 0 ₴';
+                cartItemsDiv.innerHTML = `<p style="text-align: center; color: #999;">${t.emptyCart}</p>`;
+                cartTotalDiv.textContent = `${t.total}: 0 ${t.currency}`;
                 return;
             }
 
             cartItemsDiv.innerHTML = cart.map(item => `
                 <div class="cart-item">
                     <div>
-                        <div style="font-weight: bold;">${item.name}</div>
-                        <div style="color: #666;">${item.price.toLocaleString()} ₴</div>
+                        <div style="font-weight: bold;">${item.name[currentLanguage]}</div>
+                        <div style="color: #666;">${item.price.toLocaleString()} ${t.currency}</div>
                     </div>
                     <div class="quantity-controls">
                         <button class="quantity-btn" onclick="changeQuantity(${item.id}, -1)">-</button>
@@ -504,10 +991,9 @@
             `).join('');
 
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartTotalDiv.textContent = `Загальна сума: ${total.toLocaleString()} ₴`;
+            cartTotalDiv.textContent = `${t.total}: ${total.toLocaleString()} ${t.currency}`;
         }
 
-        // Зміна кількості товару
         function changeQuantity(productId, change) {
             const item = cart.find(item => item.id === productId);
             if (item) {
@@ -521,14 +1007,12 @@
             }
         }
 
-        // Видалення товару з кошика
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCartCount();
             displayCartItems();
         }
 
-        // Оформлення замовлення через WayForPay
         function checkout() {
             if (cart.length === 0) {
                 alert('Кошик порожній!');
@@ -538,50 +1022,78 @@
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const orderReference = 'ORDER_' + Date.now();
             
-            // Дані для WayForPay (замініть на свої!)
+            // Налаштування для WayForPay (замініть на свої дані!)
             const wayforpay = new Wayforpay();
             
             wayforpay.run({
                 merchantAccount: "test_merch_n1", // Замініть на ваш Merchant Account
                 merchantDomainName: window.location.hostname,
                 authorizationType: "SimpleSignature",
-                merchantSignature: "c6d08b50ed25e3be19f8c9e9617bb2bb62cd67b6", // Підпис (розрахується на сервері)
+                merchantSignature: "c6d08b50ed25e3be19f8c9e9617bb2bb62cd67b6", // Підпис
                 orderReference: orderReference,
                 orderDate: Math.floor(Date.now() / 1000),
                 amount: total,
-                currency: "UAH",
-                productName: cart.map(item => item.name).join(', '),
+                currency: currentLanguage === 'uk' ? "UAH" : "EUR",
+                productName: cart.map(item => item.name[currentLanguage]).join(', '),
                 productCount: cart.map(item => item.quantity).join(', '),
                 productPrice: cart.map(item => item.price).join(', '),
-                clientFirstName: "Іван",
-                clientLastName: "Іваненко",
+                clientFirstName: "Test",
+                clientLastName: "User",
                 clientEmail: "test@test.com",
                 clientPhone: "380501234567",
-                language: "UA"
+                language: currentLanguage.toUpperCase()
             },
             function (response) {
-                // Успішна оплата
                 alert('Оплата успішна! Дякуємо за замовлення!');
                 cart = [];
                 updateCartCount();
                 closeCart();
             },
             function (response) {
-                // Неуспішна оплата
                 alert('Помилка оплати. Спробуйте ще раз.');
             });
         }
 
-        // Ініціалізація
+        // ============= ФУНКЦІЇ ЮРИДИЧНИХ СТОРІНОК =============
+        function showLegal(type) {
+            const modal = document.getElementById('legalModal');
+            const content = document.getElementById('legalContent');
+            const legalData = legalTexts[type][currentLanguage];
+            
+            content.innerHTML = `
+                <h2>${legalData.title}</h2>
+                ${legalData.content}
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeLegal() {
+            document.getElementById('legalModal').style.display = 'none';
+        }
+
+        // ============= ІНІЦІАЛІЗАЦІЯ =============
         document.addEventListener('DOMContentLoaded', function() {
-            displayProducts();
+            // Завантажити збережену мову або використати українську
+            const savedLanguage = localStorage.getItem('language') || 'uk';
+            setLanguage(savedLanguage);
+            
+            // Додати обробники для кнопок мови
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+            });
         });
 
-        // Закриття модального вікна при кліку поза ним
+        // Закриття модальних вікон при кліку поза ними
         window.onclick = function(event) {
-            const modal = document.getElementById('cartModal');
-            if (event.target === modal) {
+            const cartModal = document.getElementById('cartModal');
+            const legalModal = document.getElementById('legalModal');
+            
+            if (event.target === cartModal) {
                 closeCart();
+            }
+            if (event.target === legalModal) {
+                closeLegal();
             }
         }
     </script>
