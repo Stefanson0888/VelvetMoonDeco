@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VelvetMoon Deco</title>
+    <title>VelvetMoon Deco - М'які іграшки та декор</title>
     <style>
         :root {
             /* Основна кольорова палітра - легко змінювати */
@@ -483,8 +483,9 @@
             <!-- Адмін помітка для легкого редагування -->
             <div class="admin-note">
                 <strong>📝 Для додавання товарів:</strong> Відредагуйте об'єкт <code>productsData</code> в JavaScript секції (рядок ~100). 
-                <br><strong>📸 Для фото:</strong> Використовуйте URL зображень або покладіть файли в папку <code>images/</code> і вкажіть <code>"./images/photo.jpg"</code>
-                <br><strong>🎨 Для емодзі:</strong> Просто вкажіть емодзі як <code>"🌙"</code>
+                <br><strong>📸 Для локальних фото:</strong> Покладіть зображення в папку <code>images/</code> і вкажіть точну назву файлу
+                <br><strong>📁 Поточні файли:</strong> Sheeps.jpeg, whalesB&S.jpeg, WhalePink.jpeg, HorsesWhite.jpeg, Sheeps1.jpeg, WhalesS&S.jpeg, WhalesNavy.jpeg, WhaleSpink.jpeg, GorsesColor.jpeg
+                <br><strong>🔄 Fallback:</strong> Якщо фото не завантажиться - покаже емодзі
             </div>
 
             <div class="products-grid" id="productsGrid">
@@ -633,7 +634,7 @@
                 siteName: "VelvetMoon Deco",
                 cart: "Кошик",
                 heroTitle: "Ласкаво просимо до VelvetMoon Deco!",
-                heroSubtitle: "Унікальні предмети декору для вашого дому",
+                heroSubtitle: "М'які іграшки та декор для затишного дому",
                 addToCart: "Додати в кошик",
                 yourCart: "Ваш кошик",
                 total: "Загальна сума",
@@ -651,7 +652,7 @@
                 siteName: "VelvetMoon Deco",
                 cart: "Cart",
                 heroTitle: "Welcome to VelvetMoon Deco!",
-                heroSubtitle: "Unique home decor items",
+                heroSubtitle: "Soft toys and decor for a cozy home",
                 addToCart: "Add to Cart",
                 yourCart: "Your Cart",
                 total: "Total",
@@ -669,7 +670,7 @@
                 siteName: "VelvetMoon Deco",
                 cart: "Warenkorb",
                 heroTitle: "Willkommen bei VelvetMoon Deco!",
-                heroSubtitle: "Einzigartige Wohndekorationen",
+                heroSubtitle: "Kuscheltiere und Dekoration für ein gemütliches Zuhause",
                 addToCart: "In den Warenkorb",
                 yourCart: "Ihr Warenkorb",
                 total: "Gesamt",
@@ -912,7 +913,7 @@
             localStorage.setItem('language', lang);
         }
 
-        // ============= ВІДОБРАЖЕННЯ ТОВАРІВ (СПРОЩЕНА ВЕРСІЯ) =============
+        // ============= ВІДОБРАЖЕННЯ ТОВАРІВ (З FALLBACK ДЛЯ ЗОБРАЖЕНЬ) =============
         function displayProducts() {
             const grid = document.getElementById('productsGrid');
             const t = translations[currentLanguage];
@@ -920,12 +921,21 @@
             let html = '';
             
             for (let product of productsData) {
-                const isImage = product.image.includes('http') || product.image.includes('./') || product.image.includes('.');
+                // Fallback емодзі на випадок якщо зображення не завантажиться
+                const fallbackEmoji = {
+                    toys: "🧸",
+                    decor: "🏺", 
+                    textiles: "🧶",
+                    candles: "🕯️",
+                    lighting: "💡"
+                };
                 
                 html += `
                     <div class="product-card">
                         <div class="product-image">
-                            ${isImage ? `<img src="${product.image}" alt="${product.name[currentLanguage]}">` : product.image}
+                            <img src="${product.image}" 
+                                 alt="${product.name[currentLanguage]}"
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='${fallbackEmoji[product.category] || '🖼️'}';">
                         </div>
                         <div class="product-title">${product.name[currentLanguage]}</div>
                         <div class="product-description">${product.description[currentLanguage]}</div>
