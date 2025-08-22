@@ -97,6 +97,27 @@
             color: var(--text-light);
         }
 
+        .etsy-btn {
+            background: #ff6900;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .etsy-btn:hover {
+            background: #e55a00;
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
         .cart-btn {
             background: var(--primary-color);
             color: var(--text-light);
@@ -244,6 +265,30 @@
         .add-to-cart:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .etsy-product-btn {
+            width: 100%;
+            background: #ff6900;
+            color: var(--text-light);
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .etsy-product-btn:hover {
+            background: #e55a00;
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: var(--text-light);
         }
 
         .cart-modal, .legal-modal {
@@ -433,6 +478,21 @@
                 text-align: center;
             }
 
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+
+            .language-selector {
+                order: -1;
+            }
+
+            .etsy-btn, .cart-btn {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
             .footer-links {
                 flex-direction: column;
                 gap: 1rem;
@@ -453,6 +513,10 @@
                         <button class="lang-btn" data-lang="en">EN</button>
                         <button class="lang-btn" data-lang="de">DE</button>
                     </div>
+                    <a href="https://www.etsy.com/shop/VelvetMoonDeco" target="_blank" class="etsy-btn" data-translate="etsyStore">
+                        🛒 Etsy Store
+                    </a>
+                    <!-- ☝️ ЗАМІНІТЬ YourShopName на назву вашого Etsy магазину -->
                     <button class="cart-btn" onclick="openCart()">
                         🛒 <span data-translate="cart">Кошик</span>
                         <span class="cart-count" id="cartCount">0</span>
@@ -501,6 +565,8 @@
                 <a href="#" class="footer-link" onclick="showLegal('terms')" data-translate="terms">Умови використання</a>
                 <a href="#" class="footer-link" onclick="showLegal('delivery')" data-translate="delivery">Доставка та повернення</a>
                 <a href="#" class="footer-link" onclick="showLegal('contact')" data-translate="contact">Контакти</a>
+                <a href="https://www.etsy.com/shop/YourShopName" target="_blank" class="footer-link" data-translate="etsyShop">🛒 Наш магазин на Etsy</a>
+                <!-- ☝️ ЗАМІНІТЬ YourShopName на назву вашого Etsy магазину -->
             </div>
             <p>&copy; 2025 VelvetMoon Deco. <span data-translate="rights">Всі права захищені.</span></p>
         </div>
@@ -510,6 +576,7 @@
 
     <script>
         // ============= ТОВАРИ ТІЛЬКИ ВАШІ =============
+        // 💡 ВАЖЛИВО: Замініть всі etsyUrl на справжні посилання ваших товарів на Etsy
         const productsData = [
             {
                 id: 1,
@@ -525,7 +592,8 @@
                 },
                 price: 890,
                 image: "./images/Sheeps.jpeg",
-                category: "toys"
+                category: "toys",
+                etsyUrl: "https://www.etsy.com/listing/your-sheep-listing-id"
             },
             {
                 id: 2,
@@ -541,7 +609,8 @@
                 },
                 price: 1290,
                 image: "./images/whalesB&S.jpeg",
-                category: "decor"
+                category: "decor",
+                etsyUrl: "https://www.etsy.com/listing/your-whale-bw-listing-id"
             },
             {
                 id: 3,
@@ -557,7 +626,8 @@
                 },
                 price: 750,
                 image: "./images/WhalePink.jpeg",
-                category: "toys"
+                category: "toys",
+                etsyUrl: "https://www.etsy.com/listing/your-pink-whale-listing-id"
             },
             {
                 id: 4,
@@ -573,7 +643,8 @@
                 },
                 price: 1150,
                 image: "./images/HorsesWhite.jpeg",
-                category: "decor"
+                category: "decor",
+                etsyUrl: "https://www.etsy.com/listing/your-white-horses-listing-id"
             },
             {
                 id: 5,
@@ -589,7 +660,8 @@
                 },
                 price: 650,
                 image: "./images/Sheeps1.jpeg",
-                category: "toys"
+                category: "toys",
+                etsyUrl: "https://www.etsy.com/listing/your-small-sheep-listing-id"
             },
             {
                 id: 6,
@@ -605,7 +677,8 @@
                 },
                 price: 980,
                 image: "./images/WhalesS&S.jpeg",
-                category: "decor"
+                category: "decor",
+                etsyUrl: "https://www.etsy.com/listing/your-grey-whales-listing-id"
             },
             {
                 id: 7,
@@ -621,7 +694,8 @@
                 },
                 price: 820,
                 image: "./images/WhalesNavy.jpeg",
-                category: "decor"
+                category: "decor",
+                etsyUrl: "https://www.etsy.com/listing/your-navy-whale-listing-id"
             },
             {
                 id: 8,
@@ -637,7 +711,8 @@
                 },
                 price: 690,
                 image: "./images/WhaleSpink.jpeg",
-                category: "toys"
+                category: "toys",
+                etsyUrl: "https://www.etsy.com/listing/your-pink-spink-whale-listing-id"
             },
             {
                 id: 9,
@@ -653,7 +728,8 @@
                 },
                 price: 1350,
                 image: "./images/GorsesColor.jpeg",
-                category: "toys"
+                category: "toys",
+                etsyUrl: "https://www.etsy.com/listing/your-colorful-horses-listing-id"
             }
         ];
 
@@ -675,7 +751,10 @@
                 delivery: "Доставка та повернення",
                 contact: "Контакти",
                 rights: "Всі права захищені",
-                addedToCart: "додано в кошик!"
+                addedToCart: "додано в кошик!",
+                etsyStore: "🛒 Etsy Store",
+                etsyShop: "🛒 Наш магазин на Etsy",
+                viewOnEtsy: "Переглянути на Etsy"
             },
             en: {
                 siteName: "VelvetMoon Deco",
@@ -693,7 +772,10 @@
                 delivery: "Shipping & Returns", 
                 contact: "Contact",
                 rights: "All rights reserved",
-                addedToCart: "added to cart!"
+                addedToCart: "added to cart!",
+                etsyStore: "🛒 Etsy Store",
+                etsyShop: "🛒 Our Etsy Shop",
+                viewOnEtsy: "View on Etsy"
             },
             de: {
                 siteName: "VelvetMoon Deco",
@@ -711,7 +793,10 @@
                 delivery: "Versand & Rücksendung",
                 contact: "Kontakt", 
                 rights: "Alle Rechte vorbehalten",
-                addedToCart: "in den Warenkorb hinzugefügt!"
+                addedToCart: "in den Warenkorb hinzugefügt!",
+                etsyStore: "🛒 Etsy Store",
+                etsyShop: "🛒 Unser Etsy Shop",
+                viewOnEtsy: "Auf Etsy ansehen"
             }
         };
 
@@ -964,6 +1049,9 @@
                         <button class="add-to-cart" onclick="addToCart(${product.id})">
                             ${t.addToCart}
                         </button>
+                        <a href="${product.etsyUrl}" target="_blank" class="etsy-product-btn">
+                            ${t.viewOnEtsy}
+                        </a>
                     </div>
                 `;
             }
