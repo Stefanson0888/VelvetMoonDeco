@@ -527,23 +527,23 @@
     <div class="notification" id="notification"></div>
 
     <script>
-        // ============= КОНФІГУРАЦІЯ ТОВАРІВ (ЛЕГКО РЕДАГУВАТИ) =============
+        // ============= КОНФІГУРАЦІЯ ТОВАРІВ (АВАРІЙНА ВЕРСІЯ З ЕМОДЗІ) =============
         const productsData = [
             {
                 id: 1,
                 name: {
-                    uk: "Мобіль Вівці",
-                    en: "Mobile Sheeps", 
-                    de: "Mobil Schafe"
+                    uk: "Оксамитова подушка Moon",
+                    en: "Velvet Moon Cushion", 
+                    de: "Samt Mond Kissen"
                 },
                 description: {
                     uk: "Розкішна оксамитова подушка з вишивкою місяця",
                     en: "Luxurious velvet cushion with moon embroidery",
                     de: "Luxuriöses Samtkissen mit Mondstickerei"
                 },
-                price: 5500,
-                image: "./images/,Sheeps.jpeg"
-                category: "mobiles"
+                price: 1290,
+                image: "🌙",
+                category: "textiles"
             },
             {
                 id: 2,
@@ -558,7 +558,7 @@
                     de: "Handgemachte Duftkerze mit natürlichen Ölen"
                 },
                 price: 450,
-                image: "https://images.unsplash.com/photo-1602874801265-f8ad94a88f98?w=400&h=400&fit=crop",
+                image: "🕯️",
                 category: "candles"
             },
             {
@@ -574,7 +574,7 @@
                     de: "Minimalistische Vase aus Naturholz"
                 },
                 price: 890,
-                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop",
+                image: "🏺",
                 category: "decor"
             },
             {
@@ -590,7 +590,7 @@
                     de: "Eleganter Kristallkronleuchter für Wohnzimmer"
                 },
                 price: 4500,
-                image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=400&h=400&fit=crop",
+                image: "💎",
                 category: "lighting"
             },
             {
@@ -606,7 +606,7 @@
                     de: "Traditioneller handgeknüpfter Teppich mit orientalischen Motiven"
                 },
                 price: 2890,
-                image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=400&fit=crop",
+                image: "🧿",
                 category: "textiles"
             },
             {
@@ -622,7 +622,7 @@
                     de: "Antiker Spiegel in goldenem Rahmen"
                 },
                 price: 1650,
-                image: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&h=400&fit=crop",
+                image: "🪞",
                 category: "decor"
             }
         ];
@@ -912,21 +912,21 @@
             localStorage.setItem('language', lang);
         }
 
-        // ============= ВІДОБРАЖЕННЯ ТОВАРІВ =============
+        // ============= ВІДОБРАЖЕННЯ ТОВАРІВ (СПРОЩЕНА ВЕРСІЯ) =============
         function displayProducts() {
             const grid = document.getElementById('productsGrid');
             const t = translations[currentLanguage];
             
-            grid.innerHTML = productsData.map(product => {
-                // Перевіряємо чи це URL зображення чи емодзі
-                const isImageUrl = product.image.startsWith('http') || product.image.startsWith('./') || product.image.includes('.');
-                const imageHtml = isImageUrl 
-                    ? `<img src="${product.image}" alt="${product.name[currentLanguage]}" onerror="this.style.display='none'; this.parentElement.classList.add('emoji'); this.parentElement.innerHTML='🖼️';">`
-                    : product.image;
+            let html = '';
+            
+            for (let product of productsData) {
+                const isImage = product.image.includes('http') || product.image.includes('./') || product.image.includes('.');
                 
-                return `
+                html += `
                     <div class="product-card">
-                        <div class="product-image ${isImageUrl ? '' : 'emoji'}">${imageHtml}</div>
+                        <div class="product-image">
+                            ${isImage ? `<img src="${product.image}" alt="${product.name[currentLanguage]}">` : product.image}
+                        </div>
                         <div class="product-title">${product.name[currentLanguage]}</div>
                         <div class="product-description">${product.description[currentLanguage]}</div>
                         <div class="product-price">${product.price.toLocaleString()} ${t.currency}</div>
@@ -935,7 +935,9 @@
                         </button>
                     </div>
                 `;
-            }).join('');
+            }
+            
+            grid.innerHTML = html;
         }
 
         // ============= ФУНКЦІЇ КОШИКА =============
