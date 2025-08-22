@@ -6,7 +6,6 @@
     <title>VelvetMoon Deco - М'які іграшки та декор</title>
     <style>
         :root {
-            /* Основна кольорова палітра - легко змінювати */
             --primary-color: #2c1810;
             --secondary-color: #8b4513;
             --accent-color: #d4af37;
@@ -439,16 +438,6 @@
                 gap: 1rem;
             }
         }
-
-        /* Секція для легкого додавання товарів */
-        .admin-note {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            display: none; /* Показувати тільки в режимі редагування */
-        }
     </style>
 </head>
 <body>
@@ -477,15 +466,7 @@
         <div class="container">
             <div class="hero">
                 <h1 data-translate="heroTitle">Ласкаво просимо до VelvetMoon Deco!</h1>
-                <p data-translate="heroSubtitle">Унікальні предмети декору для вашого дому</p>
-            </div>
-
-            <!-- Адмін помітка для легкого редагування -->
-            <div class="admin-note">
-                <strong>📝 Для додавання товарів:</strong> Відредагуйте об'єкт <code>productsData</code> в JavaScript секції (рядок ~100). 
-                <br><strong>📸 Для локальних фото:</strong> Покладіть зображення в папку <code>images/</code> і вкажіть точну назву файлу
-                <br><strong>📁 Поточні файли:</strong> Sheeps.jpeg, whalesB&S.jpeg, WhalePink.jpeg, HorsesWhite.jpeg, Sheeps1.jpeg, WhalesS&S.jpeg, WhalesNavy.jpeg, WhaleSpink.jpeg, GorsesColor.jpeg
-                <br><strong>🔄 Fallback:</strong> Якщо фото не завантажиться - покаже емодзі
+                <p data-translate="heroSubtitle">М'які іграшки та декор для затишного дому</p>
             </div>
 
             <div class="products-grid" id="productsGrid">
@@ -528,103 +509,151 @@
     <div class="notification" id="notification"></div>
 
     <script>
-        // ============= КОНФІГУРАЦІЯ ТОВАРІВ (АВАРІЙНА ВЕРСІЯ З ЕМОДЗІ) =============
+        // ============= ТОВАРИ ТІЛЬКИ ВАШІ =============
         const productsData = [
             {
                 id: 1,
                 name: {
-                    uk: "Оксамитова подушка Moon",
-                    en: "Velvet Moon Cushion", 
-                    de: "Samt Mond Kissen"
+                    uk: "Плюшеві вівці білі",
+                    en: "White Plush Sheep", 
+                    de: "Weiße Plüsch Schafe"
                 },
                 description: {
-                    uk: "Розкішна оксамитова подушка з вишивкою місяця",
-                    en: "Luxurious velvet cushion with moon embroidery",
-                    de: "Luxuriöses Samtkissen mit Mondstickerei"
+                    uk: "М'які декоративні іграшки-вівці для дитячої кімнати",
+                    en: "Soft decorative sheep toys for children's room",
+                    de: "Weiche dekorative Schafspielzeug für Kinderzimmer"
                 },
-                price: 1290,
-                image: "🌙",
-                category: "textiles"
+                price: 890,
+                image: "./images/Sheeps.jpeg",
+                category: "toys"
             },
             {
                 id: 2,
                 name: {
-                    uk: "Свічка з ароматом лаванди",
-                    en: "Lavender Scented Candle",
-                    de: "Lavendel Duftkerze"
+                    uk: "Кити чорно-білі",
+                    en: "Black & White Whales",
+                    de: "Schwarz-Weiße Wale"
                 },
                 description: {
-                    uk: "Ароматична свічка ручної роботи з натуральними маслами",
-                    en: "Handmade scented candle with natural oils",
-                    de: "Handgemachte Duftkerze mit natürlichen Ölen"
+                    uk: "Стильні декоративні кити в чорно-білій гамі",
+                    en: "Stylish decorative whales in black and white",
+                    de: "Stilvolle dekorative Wale in Schwarz-Weiß"
                 },
-                price: 450,
-                image: "🕯️",
-                category: "candles"
+                price: 1290,
+                image: "./images/whalesB&S.jpeg",
+                category: "decor"
             },
             {
                 id: 3,
                 name: {
-                    uk: "Дерев'яна ваза Zen",
-                    en: "Wooden Zen Vase",
-                    de: "Zen Holzvase"
+                    uk: "Рожевий кит",
+                    en: "Pink Whale",
+                    de: "Rosa Wal"
                 },
                 description: {
-                    uk: "Мінімалістична ваза з натурального дерева",
-                    en: "Minimalist vase made from natural wood",
-                    de: "Minimalistische Vase aus Naturholz"
+                    uk: "Ніжний рожевий кит - ідеальний подарунок для малечі",
+                    en: "Gentle pink whale - perfect gift for little ones",
+                    de: "Sanfter rosa Wal - perfektes Geschenk für Kleine"
                 },
-                price: 890,
-                image: "🏺",
-                category: "decor"
+                price: 750,
+                image: "./images/WhalePink.jpeg",
+                category: "toys"
             },
             {
                 id: 4,
                 name: {
-                    uk: "Люстра Crystal Dreams",
-                    en: "Crystal Dreams Chandelier",
-                    de: "Crystal Dreams Kronleuchter"
+                    uk: "Білі коні декоративні",
+                    en: "White Decorative Horses",
+                    de: "Weiße Dekorative Pferde"
                 },
                 description: {
-                    uk: "Елегантна кришталева люстра для вітальні",
-                    en: "Elegant crystal chandelier for living room",
-                    de: "Eleganter Kristallkronleuchter für Wohnzimmer"
+                    uk: "Елегантні білі коні для прикраси дому",
+                    en: "Elegant white horses for home decoration",
+                    de: "Elegante weiße Pferde für Hausdekoration"
                 },
-                price: 4500,
-                image: "💎",
-                category: "lighting"
+                price: 1150,
+                image: "./images/HorsesWhite.jpeg",
+                category: "decor"
             },
             {
                 id: 5,
                 name: {
-                    uk: "Килим Persian Style",
-                    en: "Persian Style Rug",
-                    de: "Perserteppich"
+                    uk: "Маленькі вівці",
+                    en: "Small Sheep Set",
+                    de: "Kleine Schafe Set"
                 },
                 description: {
-                    uk: "Традиційний килим ручної роботи з східними мотивами",
-                    en: "Traditional handmade rug with oriental motifs",
-                    de: "Traditioneller handgeknüpfter Teppich mit orientalischen Motiven"
+                    uk: "Набір маленьких декоративних вівець",
+                    en: "Set of small decorative sheep",
+                    de: "Set kleiner dekorativer Schafe"
                 },
-                price: 2890,
-                image: "🧿",
-                category: "textiles"
+                price: 650,
+                image: "./images/Sheeps1.jpeg",
+                category: "toys"
             },
             {
                 id: 6,
                 name: {
-                    uk: "Дзеркало Vintage Gold",
-                    en: "Vintage Gold Mirror",
-                    de: "Vintage Gold Spiegel"
+                    uk: "Кити сірі та світлі",
+                    en: "Grey & Light Whales",
+                    de: "Graue & Helle Wale"
                 },
                 description: {
-                    uk: "Антикварне дзеркало у золотистій рамі",
-                    en: "Antique mirror in golden frame",
-                    de: "Antiker Spiegel in goldenem Rahmen"
+                    uk: "Кити в ніжних сірих та світлих тонах",
+                    en: "Whales in gentle grey and light tones",
+                    de: "Wale in sanften grauen und hellen Tönen"
                 },
-                price: 1650,
-                image: "🪞",
+                price: 980,
+                image: "./images/WhalesS&S.jpeg",
                 category: "decor"
+            },
+            {
+                id: 7,
+                name: {
+                    uk: "Темно-синій кит",
+                    en: "Navy Blue Whale",
+                    de: "Marineblauer Wal"
+                },
+                description: {
+                    uk: "Стильний кит у темно-синьому кольорі",
+                    en: "Stylish whale in navy blue color",
+                    de: "Stilvoller Wal in Marineblau"
+                },
+                price: 820,
+                image: "./images/WhalesNavy.jpeg",
+                category: "decor"
+            },
+            {
+                id: 8,
+                name: {
+                    uk: "Рожевий кит Спінк",
+                    en: "Pink Whale Spink",
+                    de: "Rosa Wal Spink"
+                },
+                description: {
+                    uk: "Унікальний рожевий кит з особливим дизайном спинки",
+                    en: "Unique pink whale with special back design",
+                    de: "Einzigartiger rosa Wal mit besonderem Rückendesign"
+                },
+                price: 690,
+                image: "./images/WhaleSpink.jpeg",
+                category: "toys"
+            },
+            {
+                id: 9,
+                name: {
+                    uk: "Кольорові коні",
+                    en: "Colorful Horses",
+                    de: "Bunte Pferde"
+                },
+                description: {
+                    uk: "Яскраві кольорові коні для дитячого декору",
+                    en: "Bright colorful horses for children's decor",
+                    de: "Helle bunte Pferde für Kinderdekoration"
+                },
+                price: 1350,
+                image: "./images/GorsesColor.jpeg",
+                category: "toys"
             }
         ];
 
@@ -887,7 +916,6 @@
             currentLanguage = lang;
             document.documentElement.lang = lang;
             
-            // Оновити активну кнопку мови
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.lang === lang) {
@@ -895,7 +923,6 @@
                 }
             });
 
-            // Перекласти всі елементи
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.dataset.translate;
                 if (translations[lang] && translations[lang][key]) {
@@ -903,17 +930,15 @@
                 }
             });
 
-            // Оновити товари та кошик
             displayProducts();
             if (cart.length > 0) {
                 displayCartItems();
             }
 
-            // Зберегти вибрану мову
             localStorage.setItem('language', lang);
         }
 
-        // ============= ВІДОБРАЖЕННЯ ТОВАРІВ (З FALLBACK ДЛЯ ЗОБРАЖЕНЬ) =============
+        // ============= ВІДОБРАЖЕННЯ ТОВАРІВ =============
         function displayProducts() {
             const grid = document.getElementById('productsGrid');
             const t = translations[currentLanguage];
@@ -921,13 +946,9 @@
             let html = '';
             
             for (let product of productsData) {
-                // Fallback емодзі на випадок якщо зображення не завантажиться
                 const fallbackEmoji = {
                     toys: "🧸",
-                    decor: "🏺", 
-                    textiles: "🧶",
-                    candles: "🕯️",
-                    lighting: "💡"
+                    decor: "🏺"
                 };
                 
                 html += `
@@ -1048,14 +1069,14 @@
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const orderReference = 'ORDER_' + Date.now();
             
-            // Налаштування для WayForPay (замініть на свої дані!)
+            // WayForPay налаштування (замініть на свої дані!)
             const wayforpay = new Wayforpay();
             
             wayforpay.run({
-                merchantAccount: "test_merch_n1", // Замініть на ваш Merchant Account
+                merchantAccount: "test_merch_n1",
                 merchantDomainName: window.location.hostname,
                 authorizationType: "SimpleSignature",
-                merchantSignature: "c6d08b50ed25e3be19f8c9e9617bb2bb62cd67b6", // Підпис
+                merchantSignature: "c6d08b50ed25e3be19f8c9e9617bb2bb62cd67b6",
                 orderReference: orderReference,
                 orderDate: Math.floor(Date.now() / 1000),
                 amount: total,
@@ -1100,17 +1121,15 @@
 
         // ============= ІНІЦІАЛІЗАЦІЯ =============
         document.addEventListener('DOMContentLoaded', function() {
-            // Завантажити збережену мову або використати українську
             const savedLanguage = localStorage.getItem('language') || 'uk';
             setLanguage(savedLanguage);
             
-            // Додати обробники для кнопок мови
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
             });
         });
 
-        // Закриття модальних вікон при кліку поза ними
+        // Закриття модальних вікон
         window.onclick = function(event) {
             const cartModal = document.getElementById('cartModal');
             const legalModal = document.getElementById('legalModal');
