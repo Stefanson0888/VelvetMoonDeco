@@ -205,6 +205,10 @@
             border-radius: 10px;
         }
 
+        .product-image.emoji {
+            background: linear-gradient(45deg, #f8f8f8, #e8e8e8);
+        }
+
         .product-title {
             font-size: 1.3rem;
             font-weight: bold;
@@ -478,7 +482,9 @@
 
             <!-- Адмін помітка для легкого редагування -->
             <div class="admin-note">
-                <strong>📝 Для додавання товарів:</strong> Відредагуйте об'єкт <code>productsData</code> в JavaScript секції (рядок ~100). Просто скопіюйте один товар і змініть дані.
+                <strong>📝 Для додавання товарів:</strong> Відредагуйте об'єкт <code>productsData</code> в JavaScript секції (рядок ~100). 
+                <br><strong>📸 Для фото:</strong> Використовуйте URL зображень або покладіть файли в папку <code>images/</code> і вкажіть <code>"./images/photo.jpg"</code>
+                <br><strong>🎨 Для емодзі:</strong> Просто вкажіть емодзі як <code>"🌙"</code>
             </div>
 
             <div class="products-grid" id="productsGrid">
@@ -514,7 +520,7 @@
                 <a href="#" class="footer-link" onclick="showLegal('delivery')" data-translate="delivery">Доставка та повернення</a>
                 <a href="#" class="footer-link" onclick="showLegal('contact')" data-translate="contact">Контакти</a>
             </div>
-            <p>&copy; 2025 VelvetMoon Deco by Stefanson. <span data-translate="rights">Всі права захищені.</span></p>
+            <p>&copy; 2025 VelvetMoon Deco. <span data-translate="rights">Всі права захищені.</span></p>
         </div>
     </footer>
 
@@ -526,18 +532,18 @@
             {
                 id: 1,
                 name: {
-                    uk: "Оксамитова подушка Moon",
-                    en: "Velvet Moon Cushion", 
-                    de: "Samt Mond Kissen"
+                    uk: "Мобіль Вівці",
+                    en: "Mobile Sheeps", 
+                    de: "Mobil Schafe"
                 },
                 description: {
                     uk: "Розкішна оксамитова подушка з вишивкою місяця",
                     en: "Luxurious velvet cushion with moon embroidery",
                     de: "Luxuriöses Samtkissen mit Mondstickerei"
                 },
-                price: 1290,
-                image: "🌙",
-                category: "textiles"
+                price: 5500,
+                image: "./images/,Sheeps.jpeg"
+                category: "mobiles"
             },
             {
                 id: 2,
@@ -552,7 +558,7 @@
                     de: "Handgemachte Duftkerze mit natürlichen Ölen"
                 },
                 price: 450,
-                image: "🕯️",
+                image: "https://images.unsplash.com/photo-1602874801265-f8ad94a88f98?w=400&h=400&fit=crop",
                 category: "candles"
             },
             {
@@ -568,7 +574,7 @@
                     de: "Minimalistische Vase aus Naturholz"
                 },
                 price: 890,
-                image: "🏺",
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop",
                 category: "decor"
             },
             {
@@ -584,7 +590,7 @@
                     de: "Eleganter Kristallkronleuchter für Wohnzimmer"
                 },
                 price: 4500,
-                image: "💎",
+                image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=400&h=400&fit=crop",
                 category: "lighting"
             },
             {
@@ -600,7 +606,7 @@
                     de: "Traditioneller handgeknüpfter Teppich mit orientalischen Motiven"
                 },
                 price: 2890,
-                image: "🧿",
+                image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=400&fit=crop",
                 category: "textiles"
             },
             {
@@ -616,7 +622,7 @@
                     de: "Antiker Spiegel in goldenem Rahmen"
                 },
                 price: 1650,
-                image: "🪞",
+                image: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&h=400&fit=crop",
                 category: "decor"
             }
         ];
@@ -830,9 +836,9 @@
                     title: "Контакти",
                     content: `
                         <h3>Зв'яжіться з нами</h3>
-                        <p><strong>Email:</strong> velvet.moon.dreams@gmail.com</p>
-                        <p><strong>Телефон:</strong> +380 (66) 310-38-22</p>
-                        <p><strong>Адреса:</strong> Пр. О.Поля, 67, Дніпро, Україна</p>
+                        <p><strong>Email:</strong> info@velvetmoondeco.com</p>
+                        <p><strong>Телефон:</strong> +380 (50) 123-45-67</p>
+                        <p><strong>Адреса:</strong> вул. Декоративна, 15, Київ, Україна</p>
                         
                         <h3>Години роботи</h3>
                         <p>Пн-Пт: 9:00 - 18:00<br>
@@ -844,9 +850,9 @@
                     title: "Contact",
                     content: `
                         <h3>Get in Touch</h3>
-                        <p><strong>Email:</strong> velvet.moon.dreams@gmail.com</p>
-                        <p><strong>Phone:</strong> +380 (66) 310-38-22</p>
-                        <p><strong>Address:</strong> O.Polya ave. 76, Dnipro, Ukraine</p>
+                        <p><strong>Email:</strong> info@velvetmoondeco.com</p>
+                        <p><strong>Phone:</strong> +49 (30) 123-45-67</p>
+                        <p><strong>Address:</strong> Decorative Str. 15, Berlin, Germany</p>
                         
                         <h3>Business Hours</h3>
                         <p>Mon-Fri: 9:00 - 18:00<br>
@@ -858,9 +864,9 @@
                     title: "Kontakt",
                     content: `
                         <h3>Kontaktieren Sie uns</h3>
-                        <p><strong>E-Mail:</strong> velvet.moon.dreams@gmail.com</p>
-                        <p><strong>Telefon:</strong> +380 (66) 310-38-22</p>
-                        <p><strong>Adresse:</strong> O.Polya ave. 76, Dnipro, Ukraine</p>
+                        <p><strong>E-Mail:</strong> info@velvetmoondeco.com</p>
+                        <p><strong>Telefon:</strong> +49 (30) 123-45-67</p>
+                        <p><strong>Adresse:</strong> Dekorative Str. 15, Berlin, Deutschland</p>
                         
                         <h3>Geschäftszeiten</h3>
                         <p>Mo-Fr: 9:00 - 18:00<br>
@@ -911,17 +917,25 @@
             const grid = document.getElementById('productsGrid');
             const t = translations[currentLanguage];
             
-            grid.innerHTML = productsData.map(product => `
-                <div class="product-card">
-                    <div class="product-image">${product.image}</div>
-                    <div class="product-title">${product.name[currentLanguage]}</div>
-                    <div class="product-description">${product.description[currentLanguage]}</div>
-                    <div class="product-price">${product.price.toLocaleString()} ${t.currency}</div>
-                    <button class="add-to-cart" onclick="addToCart(${product.id})">
-                        ${t.addToCart}
-                    </button>
-                </div>
-            `).join('');
+            grid.innerHTML = productsData.map(product => {
+                // Перевіряємо чи це URL зображення чи емодзі
+                const isImageUrl = product.image.startsWith('http') || product.image.startsWith('./') || product.image.includes('.');
+                const imageHtml = isImageUrl 
+                    ? `<img src="${product.image}" alt="${product.name[currentLanguage]}" onerror="this.style.display='none'; this.parentElement.classList.add('emoji'); this.parentElement.innerHTML='🖼️';">`
+                    : product.image;
+                
+                return `
+                    <div class="product-card">
+                        <div class="product-image ${isImageUrl ? '' : 'emoji'}">${imageHtml}</div>
+                        <div class="product-title">${product.name[currentLanguage]}</div>
+                        <div class="product-description">${product.description[currentLanguage]}</div>
+                        <div class="product-price">${product.price.toLocaleString()} ${t.currency}</div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">
+                            ${t.addToCart}
+                        </button>
+                    </div>
+                `;
+            }).join('');
         }
 
         // ============= ФУНКЦІЇ КОШИКА =============
