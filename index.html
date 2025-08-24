@@ -1211,6 +1211,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedLanguage = localStorage.getItem('language') || 'uk';
             setLanguage(savedLanguage);
+            loadProducts();
             
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
