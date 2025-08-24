@@ -566,17 +566,17 @@
                 <a href="#" class="footer-link" onclick="showLegal('delivery')" data-translate="delivery">Доставка та повернення</a>
                 <a href="#" class="footer-link" onclick="showLegal('contact')" data-translate="contact">Контакти</a>
                 <a href="https://www.etsy.com/shop/VelvetMoonDeco" target="_blank" class="footer-link" data-translate="etsyShop">🛒 Наш магазин на Etsy</a>
-                <!-- ☝️ ЗАМІНІТЬ YourShopName на назву вашого Etsy магазину -->
+                
             </div>
-            <p>&copy; 2025 VelvetMoon Deco. <span data-translate="rights">Всі права захищені.</span></p>
+            <p>&copy; 2025 VelvetMoon Deco by Stefanson. <span data-translate="rights">Всі права захищені.</span></p>
         </div>
     </footer>
 
     <div class="notification" id="notification"></div>
 
     <script>
-        // ============= ТОВАРИ ТІЛЬКИ ВАШІ =============
-        // 💡 ВАЖЛИВО: Замініть всі etsyUrl на справжні посилання ваших товарів на Etsy
+        // ============= ТОВАРИ =============
+    
         const productsData = [
             {
                 id: 1,
@@ -951,9 +951,9 @@
                     title: "Контакти",
                     content: `
                         <h3>Зв'яжіться з нами</h3>
-                        <p><strong>Email:</strong> info@velvetmoondeco.com</p>
-                        <p><strong>Телефон:</strong> +380 (50) 123-45-67</p>
-                        <p><strong>Адреса:</strong> вул. Декоративна, 15, Київ, Україна</p>
+                        <p><strong>Email:</strong> velvet.moon.deco@gmail.com</p>
+                        <p><strong>Телефон:</strong> +380 (66) 310-38-22</p>
+                        <p><strong>Адреса:</strong> пр. О.Поля, 76, Дніпро, Україна</p>
                         
                         <h3>Години роботи</h3>
                         <p>Пн-Пт: 9:00 - 18:00<br>
@@ -965,9 +965,9 @@
                     title: "Contact",
                     content: `
                         <h3>Get in Touch</h3>
-                        <p><strong>Email:</strong> info@velvetmoondeco.com</p>
-                        <p><strong>Phone:</strong> +49 (30) 123-45-67</p>
-                        <p><strong>Address:</strong> Decorative Str. 15, Berlin, Germany</p>
+                        <p><strong>Email:</strong> velvet.moon.deco@gmail.comm</p>
+                        <p><strong>Phone:</strong> +380 (66) 310-38-22</p>
+                        <p><strong>Address:</strong> O.Polya Ave. 76, Dnipro, Ukraine</p>
                         
                         <h3>Business Hours</h3>
                         <p>Mon-Fri: 9:00 - 18:00<br>
@@ -979,9 +979,9 @@
                     title: "Kontakt",
                     content: `
                         <h3>Kontaktieren Sie uns</h3>
-                        <p><strong>E-Mail:</strong> info@velvetmoondeco.com</p>
-                        <p><strong>Telefon:</strong> +49 (30) 123-45-67</p>
-                        <p><strong>Adresse:</strong> Dekorative Str. 15, Berlin, Deutschland</p>
+                        <p><strong>E-Mail:</strong> velvet.moon.deco@gmail.com</p>
+                        <p><strong>Telefon:</strong> +380 (66) 310-38-22</p>
+                        <p><strong>Adresse:</strong> O.Polya Ave. 76, Dnipro, Ukraine</p>
                         
                         <h3>Geschäftszeiten</h3>
                         <p>Mo-Fr: 9:00 - 18:00<br>
@@ -1157,7 +1157,7 @@
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const orderReference = 'ORDER_' + Date.now();
             
-            // WayForPay налаштування (замініть на свої дані!)
+            // WayForPay налаштування (замінимо на свої дані коли отримаємо!)
             const wayforpay = new Wayforpay();
             
             wayforpay.run({
