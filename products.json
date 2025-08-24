@@ -2,14 +2,14 @@
     {
       "id": 1,
       "name": {
-        "uk": "Плюшеві вівці білі",
-        "en": "White Plush Sheep",
-        "de": "Weiße Plüsch Schafe"
+        "uk": "Мобіль Вівці",
+        "en": "Mobile Sheeps",
+        "de": "Mobile Schafe"
       },
       "description": {
-        "uk": "М'які декоративні іграшки-вівці для дитячої кімнати",
-        "en": "Soft decorative sheep toys for children's room",
-        "de": "Weiche dekorative Schafspielzeug für Kinderzimmer"
+        "uk": "М'які декоративні іграшки-вівці для дитячої кімнати. Виготовлені з натуральних матеріалів, безпечні для дітей. Ідеально підходять для декору або як іграшка.",
+        "en": "Soft decorative sheep toys for children's room. Made from natural materials, safe for children. Perfect for decoration or as a toy.",
+        "de": "Weiche dekorative Schafspielzeug für Kinderzimmer. Hergestellt aus natürlichen Materialien, sicher für Kinder. Perfekt für Dekoration oder als Spielzeug."
       },
       "price": 890,
       "originalPrice": 950,
@@ -27,16 +27,76 @@
         "de": "Schwarz-Weiße Wale"
       },
       "description": {
-        "uk": "Стильні декоративні кити в чорно-білій гамі",
-        "en": "Stylish decorative whales in black and white",
-        "de": "Stilvolle dekorative Wale in Schwarz-Weiß"
+        "uk": "Стильні декоративні кити в чорно-білій гамі. Мінімалістичний дизайн ідеально доповнить сучасний інтер'єр.",
+        "en": "Stylish decorative whales in black and white. Minimalist design perfectly complements modern interior.",
+        "de": "Stilvolle dekorative Wale in Schwarz-Weiß. Minimalistisches Design ergänzt perfekt moderne Einrichtung."
       },
       "price": 1290,
       "originalPrice": null,
       "image": "./images/whalesB&S.jpeg",
       "category": "decor",
-      "etsyUrl": "https://www.etsy.com/listing/ваш-ID-кита",
+      "etsyUrl": "https://www.etsy.com/listing/ЗАМІНІТЬ-НА-ВАШ-ID/black-white-whales",
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": 3,
+      "name": {
+        "uk": "Рожевий кит",
+        "en": "Pink Whale",
+        "de": "Rosa Wal"
+      },
+      "description": {
+        "uk": "Ніжний рожевий кит - ідеальний подарунок для малечі. М'який та безпечний, стане улюбленою іграшкою.",
+        "en": "Gentle pink whale - perfect gift for little ones. Soft and safe, will become a favorite toy.",
+        "de": "Sanfter rosa Wal - perfektes Geschenk für Kleine. Weich und sicher, wird zum Lieblingsspielzeug."
+      },
+      "price": 750,
+      "originalPrice": 850,
+      "image": "./images/WhalePink.jpeg",
+      "category": "toys",
+      "etsyUrl": "https://www.etsy.com/listing/ЗАМІНІТЬ-НА-ВАШ-ID/pink-whale-toy",
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": 4,
+      "name": {
+        "uk": "Білі коні декоративні",
+        "en": "White Decorative Horses",
+        "de": "Weiße Dekorative Pferde"
+      },
+      "description": {
+        "uk": "Елегантні білі коні для прикраси дому. Створюють атмосферу затишку та елегантності.",
+        "en": "Elegant white horses for home decoration. Create an atmosphere of coziness and elegance.",
+        "de": "Elegante weiße Pferde für Hausdekoration. Schaffen eine Atmosphäre von Gemütlichkeit und Eleganz."
+      },
+      "price": 1150,
+      "originalPrice": null,
+      "image": "./images/HorsesWhite.jpeg",
+      "category": "decor",
+      "etsyUrl": "https://www.etsy.com/listing/ЗАМІНІТЬ-НА-ВАШ-ID/white-decorative-horses",
       "inStock": false,
+      "featured": false
+    },
+    {
+      "id": 5,
+      "name": {
+        "uk": "Маленькі вівці",
+        "en": "Small Sheep Set",
+        "de": "Kleine Schafe Set"
+      },
+      "description": {
+        "uk": "Набір маленьких декоративних вівець. Чудово доповнють дитячу кімнату або стануть милим подарунком.",
+        "en": "Set of small decorative sheep. Great addition to children's room or cute gift.",
+        "de": "Set kleiner dekorativer Schafe. Tolle Ergänzung für Kinderzimmer oder süßes Geschenk."
+      },
+      "price": 650,
+      "originalPrice": null,
+      "image": "./images/Sheeps1.jpeg",
+      "category": "toys",
+      "etsyUrl": "https://www.etsy.com/listing/ЗАМІНІТЬ-НА-ВАШ-ID/small-sheep-set",
+      "inStock": true,
       "featured": false
     }
   ]
