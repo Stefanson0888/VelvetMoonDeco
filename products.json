@@ -1,0 +1,42 @@
+[
+    {
+      "id": 1,
+      "name": {
+        "uk": "Плюшеві вівці білі",
+        "en": "White Plush Sheep",
+        "de": "Weiße Plüsch Schafe"
+      },
+      "description": {
+        "uk": "М'які декоративні іграшки-вівці для дитячої кімнати",
+        "en": "Soft decorative sheep toys for children's room",
+        "de": "Weiche dekorative Schafspielzeug für Kinderzimmer"
+      },
+      "price": 890,
+      "originalPrice": 950,
+      "image": "./images/Sheeps.jpeg",
+      "category": "toys",
+      "etsyUrl": "https://www.etsy.com/listing/4347427497/adorable-crochet-sheep-mobile-handmade?ref=shop_home_active_3&frs=1&logging_key=0774ebbfbd560178bf74ac0a1c784516d4881843%3A4347427497",
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": 2,
+      "name": {
+        "uk": "Кити чорно-білі",
+        "en": "Black & White Whales",
+        "de": "Schwarz-Weiße Wale"
+      },
+      "description": {
+        "uk": "Стильні декоративні кити в чорно-білій гамі",
+        "en": "Stylish decorative whales in black and white",
+        "de": "Stilvolle dekorative Wale in Schwarz-Weiß"
+      },
+      "price": 1290,
+      "originalPrice": null,
+      "image": "./images/whalesB&S.jpeg",
+      "category": "decor",
+      "etsyUrl": "https://www.etsy.com/listing/ваш-ID-кита",
+      "inStock": false,
+      "featured": false
+    }
+  ]
