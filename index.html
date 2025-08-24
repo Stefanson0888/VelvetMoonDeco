@@ -291,7 +291,7 @@
             color: var(--text-light);
         }
 
-        .cart-modal, .legal-modal {
+        .cart-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -300,6 +300,36 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.7);
             z-index: 2000;
+        }
+
+        .legal-page {
+            display: none;
+            background: var(--card-bg);
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+        
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .back-home-btn {
+            background: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-home-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
         }
 
         .cart-content, .legal-content {
@@ -551,10 +581,12 @@
     </div>
 
     <!-- Модальне вікно для юридичних сторінок -->
-    <div class="legal-modal" id="legalModal">
-        <div class="legal-content">
-            <button class="close-modal" onclick="closeLegal()">×</button>
-            <div id="legalContent"></div>
+    <div class="legal-page" id="legalPage">
+        <div class="container">
+            <div class="legal-container">
+                <button class="back-home-btn" onclick="showHome()">← Додому</button>
+                <div id="legalContent"></div>
+            </div>
         </div>
     </div>
 
@@ -1191,29 +1223,52 @@
 
         // ============= ФУНКЦІЇ ЮРИДИЧНИХ СТОРІНОК =============
         function showLegal(type) {
-            const modal = document.getElementById('legalModal');
+            const mainContent = document.querySelector('main');
+            const footer = document.querySelector('footer');
+            const legalPage = document.getElementById('legalPage');
             const content = document.getElementById('legalContent');
             const legalData = legalTexts[type][currentLanguage];
             
+            // Приховати основний контент
+            mainContent.style.display = 'none';
+            footer.style.display = 'none';
+            
+            // Показати юридичну сторінку
             content.innerHTML = `
-                <h2>${legalData.title}</h2>
+                <h1>${legalData.title}</h1>
                 ${legalData.content}
             `;
+            legalPage.style.display = 'block';
             
-            modal.style.display = 'block';
+            // Оновити URL
+            window.history.pushState({page: type}, legalData.title, `#${type}`);
         }
-
-        function closeLegal() {
-            document.getElementById('legalModal').style.display = 'none';
+        
+        function showHome() {
+            const mainContent = document.querySelector('main');
+            const footer = document.querySelector('footer');
+            const legalPage = document.getElementById('legalPage');
+            
+            // Показати основний контент
+            mainContent.style.display = 'block';
+            footer.style.display = 'block';
+            
+            // Приховати юридичну сторінку
+            legalPage.style.display = 'none';
+            
+            // Оновити URL
+            window.history.pushState({page: 'home'}, 'VelvetMoon Deco', window.location.pathname);
         }
 
         // ============= URL РОУТИНГ =============
         function handleHashChange() {
-            const hash = window.location.hash.substring(1); // видаляємо #
+            const hash = window.location.hash.substring(1);
             const legalPages = ['privacy', 'terms', 'delivery', 'contact'];
-    
+            
             if (legalPages.includes(hash)) {
                 showLegal(hash);
+            } else {
+                showHome();
             }
         }
 
