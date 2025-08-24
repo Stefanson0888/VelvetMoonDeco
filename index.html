@@ -561,10 +561,10 @@
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="#" class="footer-link" onclick="showLegal('privacy')" data-translate="privacy">Політика конфіденційності</a>
-                <a href="#" class="footer-link" onclick="showLegal('terms')" data-translate="terms">Умови використання</a>
-                <a href="#" class="footer-link" onclick="showLegal('delivery')" data-translate="delivery">Доставка та повернення</a>
-                <a href="#" class="footer-link" onclick="showLegal('contact')" data-translate="contact">Контакти</a>
+                <a href="#privacy" class="footer-link" data-translate="privacy">Політика конфіденційності</a>
+                <a href="#terms" class="footer-link" data-translate="terms">Умови використання</a>
+                <a href="#delivery" class="footer-link" data-translate="delivery">Доставка та повернення</a>
+                <a href="#contact" class="footer-link" data-translate="contact">Контакти</a>
                 <a href="https://www.etsy.com/shop/VelvetMoonDeco" target="_blank" class="footer-link" data-translate="etsyShop">🛒 Наш магазин на Etsy</a>
                 
             </div>
@@ -1207,10 +1207,25 @@
             document.getElementById('legalModal').style.display = 'none';
         }
 
+        // ============= URL РОУТИНГ =============
+        function handleHashChange() {
+            const hash = window.location.hash.substring(1); // видаляємо #
+            const legalPages = ['privacy', 'terms', 'delivery', 'contact'];
+    
+            if (legalPages.includes(hash)) {
+                showLegal(hash);
+            }
+        }
+
+        window.addEventListener('hashchange', handleHashChange);
+
+
         // ============= ІНІЦІАЛІЗАЦІЯ =============
         document.addEventListener('DOMContentLoaded', function() {
             const savedLanguage = localStorage.getItem('language') || 'uk';
             setLanguage(savedLanguage);
+            // Перевірка URL при завантаженні сторінки
+            handleHashChange();
             
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
